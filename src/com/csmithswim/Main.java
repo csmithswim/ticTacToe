@@ -15,11 +15,90 @@ public class Main {
             }
         }
 
-        boolean gameInProgress = true;
-        int x = 0;
+        System.out.println("---------");
+        for (int i = 0; i < input.length() - 1; i += 3) {
+            System.out.println("| " + input.charAt(i) + " " + input.charAt(i + 1) + " " + input.charAt(i + 2) + " |");
+        }
+        System.out.println("---------");
+
+        boolean flag;
+        int row;
+        int column;
+
+        do {
+            System.out.print("Enter the coordinates: ");
+            Scanner selection = new Scanner(System.in);
+
+        try {
+            row = selection.nextInt();
+            column = selection.nextInt();
+            if (twoDArray[row-1][column-1] != '_') {
+                System.out.println("Cell is occupied!");
+                flag = true;
+                continue;
+            }
+            twoDArray[row-1][column-1] = 'X';
+            flag = false;
+            } catch (InputMismatchException e) {
+                System.out.println("You should enter numbers!");
+                flag = true;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Coordinates should be from 1 to 3!");
+                flag = true;
+            }
+        } while (flag);
+
+        System.out.println("---------");
+        for (int i = 0; i < 3; i++) {
+            String output = "";
+            for (int j = 0; j < 3; j++){
+                output += twoDArray[i][j] + " ";
+            }
+            System.out.println("| " + output + "|");
+        }
+        System.out.println("---------");
+
+    }
+}
+
+/*
+                    System.out.println("This cell is occupied! Choose another one!");
+                    System.out.println("Enter the coordinates: ");
+                    int row1 = scanner.nextInt();
+                    int column1 = scanner.nextInt();
+                    twoDArray[row1-1][column1-1] = 'X';
+                }
+
+        else if (twoDArray[row-1][column-1] == '_') {
+            twoDArray[row-1][column-1] = 'X';
+             */
+
+
+
+
+
+
+
+
+//From 3/5 challenge
+/*
+ int x = 0;
         int o = 0;
         int spaces = 0;
-        int xWins = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (twoDArray[i][j] == 'X') {
+                    x++;
+                }
+                if (twoDArray[i][j] == 'O') {
+                    o++;
+                }
+                if (twoDArray[i][j] == '_'){
+                    spaces++;
+                }
+            }
+        }
+ int xWins = 0;
         int oWins = 0;
         if (twoDArray[0][0] + twoDArray[1][1] + twoDArray[2][2] == 264) {
             xWins++;
@@ -33,18 +112,7 @@ public class Main {
         if (twoDArray[0][2] + twoDArray[1][1] + twoDArray[2][0] == 237){
             oWins++;
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (twoDArray[i][j] == 'X') {
-                    x++;
-                }
-                if (twoDArray[i][j] == 'O') {
-                    o++;
-                }
-            }
-        }
-
-        for (int i = 0; i < 3; i++) {
+for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 1; j++) {
                 //Rows
                 if (twoDArray[i][j] + twoDArray[i][j+1] + twoDArray[i][j+2] == 264) {
@@ -64,9 +132,6 @@ public class Main {
                     oWins++;
                     break;
                 }
-                if (twoDArray[i][j] == '_'){
-                    spaces++;
-                }
             }
         }
 
@@ -85,11 +150,4 @@ public class Main {
         else if (xWins >= 1 && oWins >= 1 || Math.abs(x-o) > 1) {
             System.out.println("Impossible");
         }
-
-        System.out.println("---------");
-        for (int i = 0; i < input.length()-1; i += 3) {
-            System.out.println("| " + input.charAt(i) + " " + input.charAt(i + 1) + " " + input.charAt(i + 2)+ " |");
-        }
-        System.out.println("---------");
-    }
-}
+ */
